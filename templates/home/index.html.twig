@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue sur notre site</h1>
+
+    <nav>
+        <ul>
+            <li><a href="{{ path('activity_index') }}">Activités</a></li>
+            <li><a href="{{ path('app_post') }}">Forum</a></li>
+            {# <li><a href="{{ path('product_index') }}">Produits</a></li> #}
+            {% if not app.user %}
+                {# <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                <li><a href="{{ path('app_register') }}">S'inscrire</a></li> #}
+            {% else %}
+                {# <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li> #}
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}

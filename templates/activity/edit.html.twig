@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'activité
+	{{ activity.name }}
+{% endblock %}
+
+{% block body %}
+<h1>Modifier l'activité</h1>
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Enregistrer les modifications</button>
+{{ form_end(form) }}
+
+<a href="{{ path('activity_show', {'id': activity.id}) }}">Annuler</a>
+<a href="{{ path('activity_index') }}">Retour à la liste</a>
+
+<form method="post" action="{{ path('activity_delete', {'id': activity.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette activité ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ activity.id) }}">
+    <button type="submit">Supprimer</button>
+</form>
+{% endblock %}
